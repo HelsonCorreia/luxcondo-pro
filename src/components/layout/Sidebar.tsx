@@ -1,10 +1,10 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard, Building2, Users, Wallet, Receipt,
   AlertTriangle, Wrench, Vote, CalendarDays, UserRound,
   Package, Briefcase, Handshake, FileText, MessageSquare,
-  Settings, ChevronRight, LogOut, Sun, Moon,
+  Settings, LogOut, Sun, Moon, X,
 } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useTheme } from '../../contexts/ThemeContext'
@@ -35,15 +35,15 @@ const navItems: NavItem[] = [
   { icon: <Settings className="w-5 h-5" />, label: 'Configurações', path: '/config' },
 ]
 
-export function Sidebar() {
+function NavList() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user, logout } = useAuth()
   const { theme, toggleTheme } = useTheme()
+  const { user, logout } = useAuth()
 
   return (
-    <aside className="hidden lg:flex flex-col h-screen w-64 bg-white border-r border-gray-100 fixed left-0 top-0 z-40 shadow-sm">
-      <div className="px-5 py-5 border-b border-gray-100">
+    <>
+      <div className="px-5 py-5 border-b border-gray-100 shrink-0">
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
             <Building2 className="w-5 h-5 text-white" />
@@ -57,7 +57,7 @@ export function Sidebar() {
 
       <nav className="flex-1 overflow-y-auto custom-scrollbar px-3 py-3 space-y-0.5">
         {navItems.map((item) => {
-          const active = location.pathname === item.path || 
+          const active = location.pathname === item.path ||
             (item.path !== '/' && location.pathname.startsWith(item.path))
           return (
             <button
@@ -79,7 +79,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="px-3 py-3 border-t border-gray-100 space-y-1">
+      <div className="px-3 py-3 border-t border-gray-100 space-y-1 shrink-0">
         <button
           onClick={toggleTheme}
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition-all"
@@ -100,6 +100,52 @@ export function Sidebar() {
           </div>
         )}
       </div>
+    </>
+  )
+}
+
+export function SidebarDesktop() {
+  return (
+    <aside className="hidden lg:flex flex-col h-screen w-64 bg-white border-r border-gray-100 fixed left-0 top-0 z-30 shadow-sm">
+      <NavList />
     </aside>
+  )
+}
+
+interface MobileDrawerProps {
+  open: boolean
+  onClose: () => void
+}
+
+export function MobileDrawer({ open, onClose }: MobileDrawerProps) {
+  useEffect(() => {
+    if (open) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const handler = () => { if (mq.matches) onClose() }
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [onClose])
+
+  if (!open) return null
+
+  return (
+    <div className="fixed inset-0 z-50 lg:hidden">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <div className="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-xl animate-in slide-in-from-left flex flex-col">
+        <div className="flex justify-end p-3 shrink-0">
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-lg">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <NavList />
+        </div>
+      </div>
+    </div>
   )
 }

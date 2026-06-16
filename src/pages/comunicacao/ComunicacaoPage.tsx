@@ -34,7 +34,7 @@ export function ComunicacaoPage() {
                   <span className="text-xs text-gray-400">{timeAgo(aviso.data)}</span>
                 </div>
                 <p className="text-sm text-gray-500 line-clamp-2">{aviso.mensagem}</p>
-                <div className="flex gap-2 mt-2">
+                <div className="flex gap-2 mt-2 flex-wrap">
                   {aviso.canal.map(c => (
                     <span key={c} className="text-xs bg-white px-2 py-0.5 rounded-full text-gray-500 border border-gray-200">
                       {c === 'push' ? 'Push' : c === 'whatsapp' ? 'WhatsApp' : 'Email'}

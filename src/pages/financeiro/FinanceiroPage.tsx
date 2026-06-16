@@ -30,7 +30,7 @@ export function FinanceiroPage() {
           <h1 className="text-2xl font-bold text-gray-900">Financeiro</h1>
           <p className="text-sm text-gray-500 mt-1">Visão geral das finanças do condomínio</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <Button variant="outline" icon={<Download className="w-4 h-4" />}>Exportar PDF</Button>
           <Button icon={<Plus className="w-4 h-4" />}>Novo Lançamento</Button>
         </div>
@@ -111,7 +111,7 @@ export function FinanceiroPage() {
                   <span className="text-sm font-bold text-red-500">{formatCurrency(p.valor)}</span>
                 </div>
                 <p className="text-xs text-gray-500 mb-3">Vencido em {formatDate(p.data)}</p>
-                <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
                   <Button size="sm" variant="outline" className="flex-1">Email</Button>
                   <Button size="sm" variant="secondary" className="flex-1">WhatsApp</Button>
                 </div>

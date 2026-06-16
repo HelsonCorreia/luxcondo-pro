@@ -14,7 +14,7 @@ export function ManutencaoPage() {
           <h1 className="text-2xl font-bold text-gray-900">Manutenção</h1>
           <p className="text-sm text-gray-500 mt-1">Gerencie as manutenções preventivas e correctivas</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <Button variant="outline" icon={<Calendar className="w-4 h-4" />}>Calendário</Button>
           <Button icon={<Plus className="w-4 h-4" />}>Nova Manutenção</Button>
         </div>

@@ -113,7 +113,7 @@ export function LoginPage() {
 
       <div className="p-3 bg-blue-50 rounded-xl text-xs text-blue-700 text-center space-y-1">
         <strong>Credenciais de teste (senha: 123456):</strong>
-        <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-left mt-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-0.5 text-left mt-1">
           <span className="font-medium">Super Admin:</span><span>admin@luxcondo.co.ao</span>
           <span className="font-medium">Admin Cond 1:</span><span>ana@luxcondo.co.ao</span>
           <span className="font-medium">Admin Cond 2:</span><span>admin2@luxcondo.co.ao</span>

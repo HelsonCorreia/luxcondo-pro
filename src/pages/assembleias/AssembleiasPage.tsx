@@ -40,7 +40,7 @@ export function AssembleiasPage() {
                   <span><Badge status={asm.formato} /></span>
                   <span><Badge status={asm.tipo} /></span>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   <Button size="sm" variant="outline">Ver Pauta</Button>
                   <Button size="sm" icon={<CheckCircle className="w-3 h-3" />}>Votar</Button>
                 </div>

@@ -31,9 +31,10 @@ export function ConfigPage() {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${tab === t.id ? 'bg-white text-primary shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`flex items-center justify-center gap-2 px-3 md:px-4 py-2.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${tab === t.id ? 'bg-white text-primary shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
             >
-              <Icon className="w-4 h-4" /> {t.label}
+              <Icon className="w-4 h-4 shrink-0" />
+              <span className="hidden md:inline">{t.label}</span>
             </button>
           )
         })}
@@ -50,7 +51,7 @@ export function ConfigPage() {
                 <Button size="sm" variant="outline" className="mt-2">Alterar Foto</Button>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input label="Nome Completo" defaultValue={user?.nome} />
               <Input label="Email" defaultValue={user?.email} />
               <Input label="Telefone" defaultValue="+244 923 456 789" />
@@ -98,7 +99,7 @@ export function ConfigPage() {
         {tab === 'tema' && (
           <div className="space-y-4">
             <p className="text-sm text-gray-500">Escolha o modo de visualização do sistema.</p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 onClick={() => theme !== 'light' && toggleTheme()}
                 className={`p-6 rounded-xl border-2 text-center transition-all ${theme === 'light' ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-gray-300'}`}

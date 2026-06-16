@@ -14,7 +14,7 @@ export function CobrancasPage() {
           <h1 className="text-2xl font-bold text-gray-900">Cobranças</h1>
           <p className="text-sm text-gray-500 mt-1">Gere as quotas de condomínio e cobranças automáticas</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <Button variant="outline" icon={<History className="w-4 h-4" />}>Histórico</Button>
           <Button icon={<Plus className="w-4 h-4" />}>Gerar Quotas</Button>
         </div>

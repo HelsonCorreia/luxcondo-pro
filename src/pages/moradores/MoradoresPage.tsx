@@ -26,7 +26,7 @@ export function MoradoresPage() {
         <Button onClick={() => setModalOpen(true)} icon={<Plus className="w-4 h-4" />}>Novo Morador</Button>
       </div>
 
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-3 items-center flex-wrap">
         <div className="relative max-w-md flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
@@ -91,8 +91,8 @@ export function MoradoresPage() {
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} title="Novo Morador" size="lg"
         footer={<><Button variant="outline" onClick={() => setModalOpen(false)}>Cancelar</Button><Button>Salvar</Button></>}>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="col-span-2"><Input label="Nome Completo" placeholder="Nome do morador" /></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="md:col-span-2"><Input label="Nome Completo" placeholder="Nome do morador" /></div>
           <Input label="Email" type="email" placeholder="email@exemplo.com" />
           <Input label="Telefone" placeholder="+244 900 000 000" />
           <Input label="BI" placeholder="Bilhete de Identidade" />

@@ -34,7 +34,7 @@ export function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Bem-vindo de volta, Admin</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Bem-vindo de volta{user?.nome ? `, ${user.nome}` : ''}</h1>
         <p className="text-sm text-gray-500 mt-1">Veja o que está a acontecer nos seus condomínios hoje.</p>
       </div>
 
