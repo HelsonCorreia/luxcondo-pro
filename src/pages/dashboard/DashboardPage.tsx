@@ -1,4 +1,5 @@
 import { useData } from '../../contexts/DataContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { StatsCard } from '../../components/ui/StatsCard'
 import { Badge } from '../../components/ui/Badge'
 import { Building2, Users, Wallet, AlertTriangle, TrendingUp, TrendingDown } from 'lucide-react'
@@ -9,6 +10,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function DashboardPage() {
   const { data } = useData()
+  const { user } = useAuth()
   const navigate = useNavigate()
 
   const totalReceitas = data.receitas.filter(r => r.status === 'recebido').reduce((a, b) => a + b.valor, 0)
